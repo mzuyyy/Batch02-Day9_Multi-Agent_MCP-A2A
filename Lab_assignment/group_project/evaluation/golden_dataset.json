@@ -1,0 +1,77 @@
+[
+  {
+    "question": "Phạm vi điều chỉnh của Luật Phòng, chống ma tuý 2021 là gì?",
+    "expected_answer": "Luật này quy định về phòng, chống ma túy; quản lý người sử dụng trái phép chất ma túy; cai nghiện ma túy; trách nhiệm của cá nhân, gia đình, cơ quan, tổ chức trong phòng, chống ma túy; quản lý nhà nước và hợp tác quốc tế về phòng, chống ma túy.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Điều 1"
+  },
+  {
+    "question": "Theo Luật Phòng, chống ma tuý 2021, chất ma tuý là gì?",
+    "expected_answer": "Chất ma túy là chất gây nghiện, chất hướng thần được quy định trong danh mục chất ma túy do Chính phủ ban hành.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Khoản 1 Điều 2"
+  },
+  {
+    "question": "Các loại cây có chứa chất ma tuý bị cấm bao gồm những cây nào?",
+    "expected_answer": "Cây có chứa chất ma túy là cây thuốc phiện, cây côca, cây cần sa và các loại cây khác có chứa chất ma túy do Chính phủ quy định.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Khoản 6 Điều 2"
+  },
+  {
+    "question": "Nhà nước có nguồn tài chính nào cho phòng, chống ma tuý?",
+    "expected_answer": "Nguồn tài chính bao gồm Ngân sách nhà nước, Nguồn tài trợ, viện trợ, đầu tư, tặng cho của tổ chức cá nhân, Chi trả của gia đình người nghiện, và Các nguồn tài chính hợp pháp khác.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Điều 4"
+  },
+  {
+    "question": "Người nghiện ma túy được giải thích như thế nào?",
+    "expected_answer": "Người nghiện ma túy là người sử dụng chất ma túy, thuốc gây nghiện, thuốc hướng thần và bị lệ thuộc vào các chất này.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Khoản 12 Điều 2"
+  },
+  {
+    "question": "Nêu các hành vi bị nghiêm cấm liên quan đến ma túy theo Luật 2021?",
+    "expected_answer": "Nghiêm cấm trồng cây có chứa chất ma túy, nghiên cứu, tàng trữ, vận chuyển, mua bán trái phép chất ma túy, sử dụng, tổ chức sử dụng trái phép chất ma túy, cưỡng bức, lôi kéo người khác, v.v.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Điều 5"
+  },
+  {
+    "question": "Cá nhân, gia đình có trách nhiệm gì trong phòng chống ma túy?",
+    "expected_answer": "Tuyên truyền, giáo dục thành viên gia đình, quản lý ngăn chặn vi phạm, thực hiện đúng chỉ định của bác sĩ khi dùng thuốc gây nghiện, hợp tác với cơ quan chức năng, cung cấp thông tin kịp thời.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Điều 6"
+  },
+  {
+    "question": "Tội tàng trữ trái phép chất ma túy bị xử lý như thế nào theo Điều 249?",
+    "expected_answer": "Người nào tàng trữ trái phép chất ma túy không nhằm mục đích mua bán, vận chuyển, sản xuất thì bị phạt tù từ 01 năm đến 05 năm nếu thuộc các trường hợp như tàng trữ heroin từ 0.1g đến dưới 5g.",
+    "expected_context": "Bộ luật hình sự 2015, Điều 249"
+  },
+  {
+    "question": "Phạt tù chung thân đối với tội tàng trữ ma túy trong trường hợp nào?",
+    "expected_answer": "Phạt tù từ 15 năm đến 20 năm hoặc tù chung thân nếu tàng trữ Heroin, Cocaine, Methamphetamine, Amphetamine, MDMA có khối lượng từ 100 gam trở lên.",
+    "expected_context": "Bộ luật hình sự 2015, Khoản 4 Điều 249"
+  },
+  {
+    "question": "Tội sản xuất trái phép chất ma túy (Điều 248) bị xử phạt ra sao?",
+    "expected_answer": "Phạt tù từ 02 năm đến 07 năm cho mức cơ bản, và có thể lên tới tử hình nếu sản xuất Heroin từ 100 gam trở lên hoặc nhựa thuốc phiện từ 5kg trở lên.",
+    "expected_context": "Bộ luật hình sự 2015, Điều 248"
+  },
+  {
+    "question": "Người vi phạm từ đủ 14 tuổi đến dưới 16 tuổi thì sao?",
+    "expected_answer": "Người từ đủ 14 tuổi đến dưới 16 tuổi phải chịu trách nhiệm hình sự về tội phạm rất nghiêm trọng, tội phạm đặc biệt nghiêm trọng quy định tại một số điều luật, trong đó có tội sản xuất, tàng trữ ma tuý.",
+    "expected_context": "Bộ luật hình sự 2015, Điều 12"
+  },
+  {
+    "question": "Diễn viên Hữu Tín bị bắt vì tội gì?",
+    "expected_answer": "Diễn viên Hữu Tín bị phát hiện sử dụng ma tuý tại một căn hộ chung cư ở TP.HCM và bị cơ quan công an khởi tố tội tổ chức sử dụng trái phép chất ma túy.",
+    "expected_context": "Tin tức Nghệ sĩ bị bắt vì ma túy"
+  },
+  {
+    "question": "Cơ sở cai nghiện ma túy tự nguyện phải đáp ứng điều kiện gì?",
+    "expected_answer": "Cơ sở cai nghiện tự nguyện phải đáp ứng các điều kiện về cơ sở vật chất, trang thiết bị y tế và nhân sự chuyên môn theo quy định của pháp luật để được cấp phép hoạt động.",
+    "expected_context": "Luật Phòng chống ma tuý 2021, Cơ sở cai nghiện"
+  },
+  {
+    "question": "Tội tổ chức sử dụng trái phép chất ma túy bị xử lý ra sao?",
+    "expected_answer": "Theo Điều 255 Bộ luật Hình sự, tội tổ chức sử dụng trái phép chất ma túy bị phạt tù từ 02 đến 07 năm, nặng nhất có thể bị tù chung thân nếu gây hậu quả chết 2 người trở lên.",
+    "expected_context": "Bộ luật hình sự 2015, Điều 255"
+  },
+  {
+    "question": "Tội vận chuyển trái phép chất ma túy (Điều 250) quy định như thế nào?",
+    "expected_answer": "Vận chuyển trái phép chất ma túy bị phạt tù từ 02 đến 07 năm ở khung cơ bản, và lên đến tử hình nếu vận chuyển số lượng đặc biệt lớn.",
+    "expected_context": "Bộ luật hình sự 2015, Điều 250"
+  }
+]

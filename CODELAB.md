@@ -66,15 +66,15 @@ Mở file `stages/stage_1_direct_llm/main.py` và trả lời:
 
 1. LLM được khởi tạo như thế nào? (Tìm hàm `get_llm()`)
 
-    Gọi thông qua ChatOpenAI
+    LLM được khởi tạo bằng `ChatOpenAI` trong `common/llm.py`. Hàm `get_llm()` đọc cấu hình từ biến môi trường như `NVIDIA_MODEL`, `NVIDIA_API_KEY`, `NVIDIA_API_BASE`, rồi trả về một client OpenAI-compatible để các stage dùng chung.
 
 2. Message được gửi đến LLM có cấu trúc gì?
 
-    Gồm 1 system message và 1 user message.
+    Message là một list gồm `SystemMessage` và `HumanMessage`. `SystemMessage` định nghĩa vai trò/cách trả lời của model, còn `HumanMessage` chứa câu hỏi thực tế từ người dùng.
 
 3. Tại sao cần có `SystemMessage` và `HumanMessage`?
 
-    Vì cần System message cho model biết context.
+    `SystemMessage` dùng để đặt instruction ổn định cho model, ví dụ "bạn là chuyên gia pháp lý" và giới hạn độ dài câu trả lời. `HumanMessage` tách riêng nội dung người dùng hỏi, giúp model phân biệt instruction hệ thống với yêu cầu cụ thể.
 
 **Bài Tập 1.1:** Thay đổi câu hỏi
 
@@ -115,8 +115,14 @@ Mở `stages/stage_2_rag_tools/main.py` và tìm:
 1. Hàm `@tool` decorator được dùng ở đâu?
 
 Trước 2 hàm `search_legal_database` và `calculate_damages`.
+
 2. `LEGAL_KNOWLEDGE` được cấu trúc như thế nào?
+
+`LEGAL_KNOWLEDGE` là một list các dictionary. Mỗi entry có `id` để định danh nguồn kiến thức, `keywords` là danh sách từ khóa dùng để match query, và `text` là nội dung pháp lý được trả về khi có từ khóa phù hợp.
+
 3. LLM được bind với tools ra sao? (Tìm `.bind_tools()`)
+
+LLM được bind bằng `llm_with_tools = llm.bind_tools(TOOLS)`, trong đó `TOOLS` là danh sách tool function đã được decorate bằng `@tool`. Sau khi bind, model có thể trả về `tool_calls`; code sẽ map tên tool sang function thật bằng `tool_map` và execute thủ công.
 
 **Bài Tập 2.1:** Thêm knowledge base entry
 
@@ -450,9 +456,20 @@ Sửa `tax_agent/graph.py`, thay đổi system prompt để agent trả lời ng
 ### Câu Hỏi Ôn Tập
 
 1. Khi nào nên dùng single agent thay vì multi-agent?
+
+Nên dùng single agent khi bài toán còn nhỏ, chỉ có một domain chính, không cần nhiều chuyên gia độc lập, và latency/chi phí triển khai quan trọng hơn khả năng scale. Single agent cũng phù hợp cho prototype vì ít moving parts hơn.
+
 2. Ưu điểm của A2A protocol so với gRPC hoặc REST thông thường?
+
+A2A cung cấp contract chuyên biệt cho giao tiếp agent-to-agent: agent card, discovery, message/task/artifact format, context/trace propagation và delegation. REST/gRPC chỉ là cơ chế RPC/API chung; nếu dùng trực tiếp thì phải tự thiết kế các convention này.
+
 3. Làm thế nào để prevent infinite delegation loops trong A2A?
+
+Dùng `delegation_depth` hoặc hop count, đặt `MAX_DELEGATION_DEPTH`, truyền `trace_id/context_id` qua các agent, và từ chối delegate tiếp khi vượt giới hạn. Có thể bổ sung visited-agent list để tránh agent A gọi B rồi B gọi lại A vô hạn.
+
 4. Tại sao cần Registry service? Có thể hardcode URLs không?
+
+Registry giúp dynamic discovery: agent tự đăng ký endpoint và capability, caller chỉ cần hỏi "agent nào xử lý task này". Có thể hardcode URL trong demo nhỏ, nhưng production sẽ khó scale, khó thay endpoint, khó failover và phải sửa code/config ở nhiều nơi khi topology thay đổi.
 
 ### Bài Tập Nâng Cao (Tự Học)
 

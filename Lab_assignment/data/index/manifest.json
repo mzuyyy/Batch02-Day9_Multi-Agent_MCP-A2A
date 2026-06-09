@@ -1,0 +1,10 @@
+{
+  "vector_store": "local_jsonl",
+  "vector_store_path": "data/index/vector_store.jsonl",
+  "num_chunks": 462,
+  "chunking_method": "recursive",
+  "chunk_size": 800,
+  "chunk_overlap": 150,
+  "embedding_model": "BAAI/bge-m3",
+  "embedding_dim": 1024
+}
