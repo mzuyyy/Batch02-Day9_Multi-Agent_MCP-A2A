@@ -372,6 +372,63 @@ Trong logs, tìm `trace_id` và theo dõi request đi qua các agents. Vẽ sequ
 2. Chạy lại `test_client.py`
 3. Quan sát lỗi và cách hệ thống xử lý
 
+Sequence diagram khi Tax Agent đã bị dừng:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User
+    participant TestClient as test_client.py
+    participant Customer as Customer Agent<br/>:10100
+    participant Registry as Registry<br/>:10000
+    participant Law as Law Agent<br/>:10101
+    participant Tax as Tax Agent<br/>:10102 stopped
+    participant Compliance as Compliance Agent<br/>:10103
+    participant LLM as LLM
+
+    User->>TestClient: Run test_client.py
+    TestClient->>Customer: GET /.well-known/agent.json
+    Customer-->>TestClient: AgentCard
+    TestClient->>Customer: A2A send_message(question)
+
+    Customer->>LLM: ReAct decide tool
+    LLM-->>Customer: Use delegate_to_legal_agent
+    Customer->>Registry: GET /discover/legal_question
+    Registry-->>Customer: Law Agent endpoint
+    Customer->>Law: A2A send_message(question, trace_id, context_id, depth=1)
+
+    Law->>LLM: analyze_law(question)
+    LLM-->>Law: law_analysis
+    Law->>LLM: check_routing(question)
+    LLM-->>Law: needs_tax=true, needs_compliance=true
+
+    par Tax branch
+        Law->>Registry: GET /discover/tax_question
+        Registry-->>Law: Tax Agent endpoint still registered
+        Law->>Tax: GET /.well-known/agent.json
+        Tax--xLaw: Connection refused / unreachable
+        Law-->>Law: catch exception in call_tax()
+        Law-->>Law: tax_result = "[Tax analysis unavailable: ...]"
+    and Compliance branch
+        Law->>Registry: GET /discover/compliance_question
+        Registry-->>Law: Compliance Agent endpoint
+        Law->>Compliance: A2A send_message(question, trace_id, context_id, depth=2)
+        Compliance->>LLM: compliance analysis
+        LLM-->>Compliance: compliance_result
+        Compliance-->>Law: A2A response
+    end
+
+    Law->>LLM: aggregate(law_analysis, tax unavailable, compliance_result)
+    LLM-->>Law: final_answer
+    Law-->>Customer: A2A response(final_answer)
+    Customer->>LLM: Present specialist response clearly
+    LLM-->>Customer: final user-facing answer
+    Customer-->>TestClient: A2A artifact legal_response
+    TestClient-->>User: Print response with Tax analysis unavailable
+```
+
+Điểm cần quan sát: Registry vẫn trả endpoint của Tax Agent vì registry là in-memory service discovery, không health-check endpoint khi discover. Lỗi chỉ xuất hiện khi Law Agent gọi A2A tới Tax Agent; `call_tax()` bắt exception và đưa thông báo unavailable vào kết quả để `aggregate()` vẫn trả được câu trả lời cuối cùng.
+
 **Bài Tập 5.3:** Modify agent behavior
 
 Sửa `tax_agent/graph.py`, thay đổi system prompt để agent trả lời ngắn gọn hơn. Restart tax agent và test lại.
