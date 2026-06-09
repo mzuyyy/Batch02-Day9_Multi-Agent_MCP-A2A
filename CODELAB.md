@@ -65,8 +65,16 @@ uv run python stages/stage_1_direct_llm/main.py
 Mở file `stages/stage_1_direct_llm/main.py` và trả lời:
 
 1. LLM được khởi tạo như thế nào? (Tìm hàm `get_llm()`)
+
+    Gọi thông qua ChatOpenAI
+
 2. Message được gửi đến LLM có cấu trúc gì?
+
+    Gồm 1 system message và 1 user message.
+
 3. Tại sao cần có `SystemMessage` và `HumanMessage`?
+
+    Vì cần System message cho model biết context.
 
 **Bài Tập 1.1:** Thay đổi câu hỏi
 
