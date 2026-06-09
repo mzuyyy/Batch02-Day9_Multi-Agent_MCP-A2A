@@ -19,7 +19,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 
 from common.llm import get_llm
 
-QUESTION = "Nếu công ty trốn thuế thì sẽ bị phạt như thế nào?" 
+QUESTION = "Nếu Messi trốn thuế thì sẽ bị phạt như thế nào?" 
 
 
 async def main():

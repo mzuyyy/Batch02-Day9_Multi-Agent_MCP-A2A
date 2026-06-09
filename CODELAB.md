@@ -113,6 +113,8 @@ uv run python stages/stage_2_rag_tools/main.py
 Mở `stages/stage_2_rag_tools/main.py` và tìm:
 
 1. Hàm `@tool` decorator được dùng ở đâu?
+
+Trước 2 hàm `search_legal_database` và `calculate_damages`.
 2. `LEGAL_KNOWLEDGE` được cấu trúc như thế nào?
 3. LLM được bind với tools ra sao? (Tìm `.bind_tools()`)
 
